@@ -13,13 +13,8 @@ pipeline {
         echo "${TEST_USER_USR}"
         echo "${TEST_USER_PSW}"
       }
-    stage('Shared Lib') {
-         steps {
-             helloWorld("Jenkins")
-         }
-      }
-    }
-          stage('Testing') {
+
+    stage('Testing') {
         parallel {
           stage('Java 8') {
             agent { label 'jdk9' }
