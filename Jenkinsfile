@@ -2,6 +2,9 @@ pipeline {
   agent {
     label 'jdk8'
   }
+  libraries {
+    lib("SharedLibs")
+  }
   stages {
     stage('Say Hello') {
       steps {
@@ -9,6 +12,11 @@ pipeline {
         sh 'java -version'
         echo "${TEST_USER_USR}"
         echo "${TEST_USER_PSW}"
+      }
+    stage('Shared Lib') {
+         steps {
+             helloWorld("Jenkins")
+         }
       }
     }
           stage('Testing') {
