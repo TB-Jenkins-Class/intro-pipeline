@@ -12,6 +12,7 @@ pipeline {
       }
     }
   }
+  
   stage('Get Kernel') {
       steps {
         script {
@@ -29,6 +30,7 @@ pipeline {
         echo "${KERNEL_VERSION}"
       }
     }
+ }
   environment {
     MY_NAME = 'Mary'
     TEST_USER = credentials('test-user')
@@ -36,9 +38,7 @@ pipeline {
   post {
     aborted {
       echo 'Why didn\'t you push my button?'
-
     }
-
   }
   parameters {
     string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to?')
